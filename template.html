@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- function -->
+    <script>
+        function myFunction() {
+            var x = document.getElementById('myInput').value
+            document.getElementById("myOutput").innerHTML = x;
+        }
+    </script>
+
+</head>
+<body>
+    <h1>My Page for JS testing</h1>
+    <br>
+    <p>Place for variables</p>
+    <hr>
+    <!-- variables -->
+    <label for="myInput">Input variable:</label><br>
+    <input type="text" name="myInput" id="myInput">
+    <br><br><br>
+    <!-- button -->
+    <button type="button" onclick="myFunction()">Try it</button>
+    <br>
+    <p>Place for output</p>
+    <hr>
+    <p></p>
+    <!-- output -->
+    <p id="myOutput"></p>
+</body>
+</html>

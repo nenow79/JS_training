@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+
+    <script>
+        function myFunction() {
+            var waga = document.getElementById('waga').value
+            var wzrost = document.getElementById('wzrost').value/100
+            var bmi = waga/(wzrost*wzrost)
+            document.getElementById("myOutput").innerHTML = bmi.toFixed(2);
+        }
+    </script>
+
+</head>
+<body>
+    <h1>BMI calculator by nenow79</h1>
+    <br>
+    <p>Place data below</p>
+    <hr>
+    <!-- variables -->
+    <label for="waga">Waga w kg:</label><br>
+    <input type="text" name="waga" id="waga">
+    <br>
+    <label for="wzrost">Wzrost w cm:</label><br>
+    <input type="text" name="wzrost" id="wzrost">
+    <br><br><br>
+    <button type="button" onclick="myFunction()">Calc</button>
+    <br>
+    <p>Place for output</p>
+    <hr>
+    <p></p>
+    <p id="myOutput"></p>
+</body>
+</html>
