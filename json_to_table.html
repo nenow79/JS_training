@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+
+<input type="text" class="myInput_s" id="inputName" placeholder="Search for name...">
+<input type="text" class="myInput_s" id="inputGender" placeholder="Gender (F/M)">
+<button type="button" onclick="myFunction()">Display</button>
+
+
+<div id="table_div"></div>
+
+<script>
+
+
+let dane = [
+{'Name':'Ala','Gender':'F','Weight':20},
+{'Name':'Ada','Gender':'F','Weight':21},
+{'Name':'Blazej','Gender':'M','Weight':62},
+{'Name':'Pawel','Gender':'M','Weight':100},
+{'Name':'Ania','Gender':'F','Weight':63},
+{'Name':'Marzena','Gender':'F','Weight':64},
+{'Name':'Adam','Gender':'M','Weight':85},
+];
+
+function generateTableHead(table, data) {
+//tworzy nagłówek tabeli
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  for (let key of data) {
+    let th = document.createElement("th");
+    let text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+//tworzy ciało tabeli
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
+
+
+
+function myFunction(){
+//Główna funkcja
+//Kasuje tabelę jeśli istnieje
+if (document.contains(document.getElementById("myTable"))) {
+            document.getElementById("myTable").remove();
+}
+
+//tworzy taga <table>
+const t = document.createElement("table");
+document.body.appendChild(t);
+
+var inputName, inputGender,inputWeightMin,inputWeightMax;
+inputName = document.getElementById("inputName").value;
+inputGender = document.getElementById("inputGender").value;
+inputWeightMin = 0;
+inputWeightMax = 180;
+
+let dane_filtrowane = [];
+
+for (let i=0;i<dane.length;i++){
+
+condName = (inputName=="")||(dane[i]['Name'].toUpperCase().includes(inputName.toUpperCase()));
+condGender = (inputGender=="")||(dane[i]['Gender']==inputGender);
+condrWeight = (dane[i]['Weight']>=inputWeightMin)&&(dane[i]['Weight']<=inputWeightMax)
+
+if (condName && condGender && condrWeight) dane_filtrowane.push(dane[i]);
+}
+
+let table = document.querySelector("table");
+table.id = 'myTable'
+let data = Object.keys(dane_filtrowane[0]);
+generateTableHead(table, data);
+generateTable(table, dane_filtrowane);
+}
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
+
